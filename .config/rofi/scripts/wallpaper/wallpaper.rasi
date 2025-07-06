@@ -1,0 +1,72 @@
+configuration {
+    show-icons: true;
+    font: "JetBrainsMono Nerd Font 11";
+    icon-theme: "Papirus";
+    display-dmenu: "  Select Wallpaper";
+    fullscreen: false;
+    location: 0;
+}
+
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
+
+* {
+    background: rgba(30, 30, 46, 0.9);
+    fg:    @foreground;
+    selected-bg: 	@selected-active-background;
+		spacing: 0.7em;
+    padding: 0.6em;
+}
+
+window {
+    width: 90%;
+    background-color: @background;
+		position: center;
+    anchor: center;
+		border:      7px;
+		border-color:  @selected-bg;
+		border-radius: 15px;
+}
+
+mainbox {
+    orientation: vertical;
+    background-color: transparent;
+    children: [ "listview" ];
+	  position: center;
+		anchor: center;
+}
+
+listview {
+    layout: horizontal;
+    columns: 7;
+    lines: 3;
+    fixed-columns: true;
+    spacing: 2em;
+    background-color: transparent;
+    padding: 1em 7em;  // Horizontal centering via padding
+}
+
+element {
+		orientation:                 vertical;
+    padding: 0;
+    spacing: 0;
+    background-color: transparent;
+    border-radius: 12px;
+}
+
+element selected.normal {
+    background-color: @selected-bg;
+}
+
+element-icon {
+    size: 400px;
+    background-color: transparent;
+    border-radius: 12px;
+    expand: false;
+}
+
+element-text {
+		background-color: transparent;
+		color: @fg;
+		horizontal-align: 0.5;
+}
+

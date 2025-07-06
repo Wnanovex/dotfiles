@@ -1,0 +1,167 @@
+@import url('../../../../.cache/wal/colors-waybar.css');
+
+* {
+    font-size: 15px;
+    font-family: "CodeNewRoman Nerd Font Propo";
+}
+
+window#waybar {
+    all: unset;
+}
+
+.modules-left, .modules-center, .modules-right {
+    padding: 2px 7px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+    background: alpha(@background, .6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, .6);
+}
+
+/* Positioning */
+.modules-left { margin-left: 10px; }
+.modules-center { margin-left: 0; margin-right: 0; }
+.modules-right { margin-right: 10px; }
+
+/* Workspaces */
+#workspaces {
+    padding: 0px 5px;
+    font-weight: bold;
+}
+
+#workspaces button {
+    font-size: 30px;
+    all: unset;
+    padding: 0px 5px;
+    /*color: alpha(@color9, .5);*/
+    color: @color9;
+    transition: all .2s ease;
+}
+
+#workspaces button:hover {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.active {
+    color: @color11;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.empty {
+    color: #808080;
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+    color: rgba(0, 0, 0, 0);
+    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+    color: @color9;
+    text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+/* Tooltips */
+tooltip {
+    background: @background;
+    color: @color7;
+}
+
+/* Hoverable modules */
+#clock:hover,
+#custom-updates:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#network:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#custom-powermenu:hover,
+#custom-appmenuicon:hover,
+#custom-cliphist:hover,
+#custom-hypridle:hover,
+#custom-settings:hover,
+#custom-hardware:hover,
+#custom-tools:hover,
+#custom-waybarthemes:hover,
+#custom-wallpaper:hover,
+#tray:hover {
+    transition: all .3s ease;
+    color: @color9;
+}
+
+/* Base modules */
+#clock,
+#custom-updates,
+#bluetooth,
+#network,
+#battery,
+#cpu,
+#memory,
+#custom-cliphist,
+#custom-hypridle,
+#custom-settings,
+#custom-hardware,
+#custom-tools,
+#custom-waybarthemes,
+#custom-wallpaper,
+#custom-powermenu,
+#custom-appmenuicon,
+#tray {
+    padding: 0px 5px;
+    transition: all .3s ease;
+    color: @color7;
+    margin: 0px 5px;
+}
+
+#custom-appmenuicon,
+#custom-powermenu,
+#custom-settings,
+#custom-hardware,
+#custom-tools {
+    font-size: 18px;
+}
+
+/* Battery states */
+#battery.charging {
+    color: #26A65B;
+}
+
+#battery.warning:not(.charging) {
+    color: #ffbe61;
+}
+
+#battery.critical:not(.charging) {
+    color: #f53c3c;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes blink {
+    from { color: #f53c3c; }
+    to { color: transparent; }
+}
+
+/* Tray styling */
+#tray {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#tray menu * {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
+#tray menu separator {
+    padding: 0px 5px;
+    transition: all .3s ease;
+}
+
