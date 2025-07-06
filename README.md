@@ -1,11 +1,12 @@
 # dotfiles
 
-<div align="center">
-![Hyprland](https://img.shields.io/badge/Hyprland-Based-blue?style=for-the-badge&logo=linux&logoColor=white&color=65B7EF)
-![Linux](https://img.shields.io/badge/Linux-Rice-green?style=for-the-badge&logo=linux&logoColor=white&color=F4685B)
-![Setup](https://img.shields.io/badge/Setup-Customized-purple?style=for-the-badge&logo=windowsterminal&logoColor=white&color=C1B9FC)
-</div>
+<p align="center">
+  <img src="https://img.shields.io/badge/Hyprland-Based-blue?style=for-the-badge&logo=linux&logoColor=white&color=65B7EF" />
+  <img src="https://img.shields.io/badge/Linux-Rice-green?style=for-the-badge&logo=linux&logoColor=white&color=F4685B" />
+  <img src="https://img.shields.io/badge/Setup-Customized-purple?style=for-the-badge&logo=windowsterminal&logoColor=white&color=C1B9FC" />
+</p>
 
+---
 
 Welcome to my personal dotfiles repository! This setup is built on [**Arch Linux**](https://archlinux.org/) using the [**Hyprland**](https://github.com/hyprwm/Hyprland) dynamic tiling Wayland compositor. It's fast, minimal, and customized for a beautiful and productive workflow.
 
