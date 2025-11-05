@@ -1,0 +1,86 @@
+(defpoll music-title :interval "1s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 1p")
+(defpoll music-artist :interval "1s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 2p")
+(defpoll music-art :interval "0.5s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 3p")
+(defpoll music-status :interval "0.5s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 4p")
+(defpoll music-player-name :interval "1s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 5p")
+;;(defpoll available-players :interval "1s" "playerctl -l | jq -R -s 'split(\"\\n\")[:-1]'")
+(defpoll music-position :interval "0.5s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 6p")
+(defpoll music-length :interval "1s" "bash ~/.config/eww/player/scripts/music.sh | sed -n 7p")
+
+(defpoll available-players :interval "3s" 
+  "playerctl -l 2>/dev/null | grep -E '(firefox|spotify|plasma|chromium|vlc|mpv|chrome)' | jq -R -s 'split(\"\\n\") | map(select(. != \"\"))'")
+
+;; formatted time display
+(defpoll music-position-formatted :interval "0.5s" "bash ~/.config/eww/player/scripts/format-position.sh")
+(defpoll music-length-formatted :interval "1s" "bash ~/.config/eww/player/scripts/format-length.sh")
+
+
+(defwidget player-switcher []
+  (box :orientation "h" :space-evenly false 
+    (for p in available-players
+      (button
+        :class {p == music-player-name ? "btn player-switch active" : "btn player-switch"}
+        :onclick "bash ~/.config/eww/player/scripts/set-player.sh ${p}"
+        (label :text {p =~ "firefox" ? "Firefox" : 
+                      p =~ "spotify" ? "Spotify" : 
+                      p =~ "plasma" ? "Brave" : 
+                      p =~ "chromium" ? "Chromium" : 
+                      p =~ "vlc" ? "VLC" : 
+                      p =~ "mpv" ? "MPV" : 
+                      "Chrome"}) ))))
+
+
+(defwidget progress-bar-with-time []
+  (box :orientation "v" :spacing 0 :class "progress-container" :space-evenly false :halign "fill"
+    (box :orientation "h" :spacing 0 :class "time-display" :halign "fill"
+      (label :text music-position-formatted :class "time-text current-time" :xalign 0)
+      (label :text music-length-formatted :class "time-text total-time" :xalign 1)
+    )
+      (scale :class "progress-bar"
+             :value {music-position}
+             :min 0
+             :max {music-length}
+             :onchange {music-player-name =~ "firefox" ? "" : "playerctl -p ${music-player-name} position {}"}
+             )
+      ))
+
+
+
+(defwidget music-player-widget []
+  (box :orientation "h" :class "music-box" :space-evenly false 
+
+    (box :class "album-art-container"
+         :orientation "v"
+      (box :class "album-art"
+           :onclick "eww -c ~/.config/eww/player close music-player"
+           :style "background-image: url('${music-art}');"))
+
+
+    (box :orientation "v" :spacing 0 :class "info" :space-evenly false 
+      (label :text music-title :class "title" :ellipsize true :limit-width 40)
+      (label :text music-artist :class "artist" :limit-width 35)
+      ;;(label :text "󰝚  ${music-player-name}" :class "source")
+      
+      ;; Use the new progress bar with time
+      (progress-bar-with-time)
+
+      (box :orientation "h" :spacing 8 :class "btns-play-container"
+        (button :class "btn prev" :onclick "playerctl -p ${music-player-name} previous" "⏮")
+        (button :class "btn play"
+          :onclick "playerctl -p ${music-player-name} play-pause"
+          {music-status != "Playing" ? "󰐊" : "󰏤"})
+        (button :class "btn next" :onclick "playerctl -p ${music-player-name} next" "⏭"))
+      
+      ;;(player-switcher)
+
+      )))
+
+(defwindow music-player
+  :monitor 0
+  :geometry (geometry :x "0%" :y "6%" :width "500px" :height "220px" :anchor "center top")
+  :stacking "overlay"
+  :exclusive false
+  :wm-ignore true
+  :windowtype "dock"
+  (music-player-widget))
+

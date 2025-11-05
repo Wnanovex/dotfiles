@@ -70,6 +70,7 @@
 #custom-waybarthemes,
 #custom-tools,
 #custom-cliphist,
+#custom-notification,
 #custom-hypridle,
 #custom-appmenuicon,
 #custom-chatgpt,
@@ -94,6 +95,9 @@
   background-color: #f9e2af;
 }
 #battery {
+  background-color: #cba6f7;
+}
+#custom-notification {
   background-color: #cba6f7;
 }
 #pulseaudio {

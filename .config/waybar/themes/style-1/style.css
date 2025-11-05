@@ -34,10 +34,13 @@
 @define-color textcolor3 #FFFFFF;
 @define-color iconcolor #FFFFFF;*/
 
-@define-color backgroundlight @color1;
+/*@define-color backgroundlight @color1;*/
+@define-color backgroundlight #1e1e2e;
 @define-color backgrounddark @color11;
+/*@define-color backgrounddark #1e1e2e;*/
 @define-color workspacesbackground1 @color11;
-@define-color workspacesbackground2 #FFFFFF;
+/*@define-color workspacesbackground2 #FFFFFF;*/
+@define-color workspacesbackground2 @backgroundlight;
 @define-color bordercolor @color8;
 @define-color textcolor1 @color4;
 @define-color textcolor2 #FFFFFF;
@@ -104,7 +107,7 @@ window#waybar {
 tooltip {
     border-radius: 10px;
     background-color: @backgroundlight;
-    opacity:0.8;
+    /*opacity:0.8;*/
     padding:20px;
     margin:0px;
 }
@@ -122,10 +125,10 @@ tooltip label {
     margin: 8px 15px 8px 0px;
     padding: 2px 10px 0px 10px;
     border-radius: 12px;
-    color:@textcolor2;
+    color:@textcolor1;
     font-size:16px;
     font-weight:normal;
-    opacity:0.8;
+    /*opacity:0.8;*/
 }
 
 window#waybar.empty #window {
@@ -143,7 +146,7 @@ window#waybar.empty #window {
     border-radius: 15px;
     font-weight: normal;
     font-style: normal;
-    opacity:0.8;
+    /*opacity:0.8;*/
     border: 3px solid @backgroundlight;
 }
 
@@ -193,6 +196,7 @@ window#waybar.empty #window {
 #custom-hyprshade,
 #custom-hypridle,
 #custom-tools,
+#custom-notification,
 #custom-quicklink1,
 #custom-quicklink2,
 #custom-quicklink3,
@@ -289,14 +293,15 @@ window#waybar.empty #window {
 }
 
 #custom-appmenuicon {
-    background-color: @backgrounddark;
+    /*background-color: @backgrounddark;*/
+		background-color: @backgroundlight;
     font-size: 25px;
     color: @textcolor2;
     border-radius: 15px;
     /*padding: 0px 10px 0px 10px;*/
 		padding: 0px 25px 0px 15px;
     margin: 8px 14px 8px 14px;
-    opacity:0.8;
+    /*opacity:0.8;*/
     /*border:3px solid @bordercolor;*/
 }
 
@@ -319,11 +324,11 @@ window#waybar.empty #window {
 #custom-updates {
     background-color: @backgroundlight;
     font-size: 16px;
-    color: @textcolor2;
+    color: @textcolor1;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    /*opacity:0.8;*/
 }
 
 #custom-updates.green {
@@ -374,9 +379,9 @@ window#waybar.empty #window {
  * ----------------------------------------------------- */
 
 #clock {
-    background-color: @backgrounddark;
+    background-color: @backgroundlight;
     font-size: 16px;
-    color: @textcolor2;
+    color: @textcolor1;
     border-radius: 15px;
     padding: 1px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
@@ -391,11 +396,11 @@ window#waybar.empty #window {
 #pulseaudio {
     background-color: @backgroundlight;
     font-size: 16px;
-    color: @textcolor2;
+    color: @textcolor1;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    /*opacity:0.8;*/
 }
 
 #pulseaudio.muted {
@@ -410,11 +415,11 @@ window#waybar.empty #window {
 #network {
     background-color: @backgroundlight;
     font-size: 16px;
-    color: @textcolor2;
+    color: @textcolor1;
     border-radius: 15px;
     padding: 2px 10px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    /*opacity:0.8;*/
 }
 
 #network.ethernet {
@@ -424,7 +429,7 @@ window#waybar.empty #window {
 
 #network.wifi {
     background-color: @backgroundlight;
-    color: @textcolor2;
+    color: @textcolor1;
 }
 
 /* -----------------------------------------------------
@@ -454,22 +459,22 @@ window#waybar.empty #window {
 #battery {
     background-color: @backgroundlight;
     font-size: 16px;
-    color: @textcolor2;
+    color: @textcolor1;
     border-radius: 15px;
     padding: 2px 15px 0px 10px;
     margin: 8px 15px 8px 0px;
-    opacity:0.8;
+    /*opacity:0.8;*/
 }
 
 #battery.charging, #battery.plugged {
-    color: @textcolor2;
+    color: @textcolor1;
     background-color: @backgroundlight;
 }
 
 @keyframes blink {
     to {
         background-color: @backgroundlight;
-        color: @textcolor2;
+        color: @textcolor1;
     }
 }
 

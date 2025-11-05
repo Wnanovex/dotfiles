@@ -1,0 +1,261 @@
+// Music Player Styles
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 14px;
+}
+
+.music-container {
+  background: rgba(30, 30, 46, 0.95);
+  border: 2px solid rgba(137, 180, 250, 0.3);
+  border-radius: 16px;
+  padding: 20px;
+  color: #cdd6f4;
+}
+
+.music-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(137, 180, 250, 0.2);
+}
+
+.music-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #89b4fa;
+  //margin-right: auto;
+}
+
+.close-btn {
+  background: transparent;
+  color: #f38ba8;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(243, 139, 168, 0.2);
+  }
+}
+
+// Player Switcher
+.player-switcher {
+  margin-bottom: 15px;
+  padding: 10px;
+  background: rgba(49, 50, 68, 0.5);
+  border-radius: 8px;
+}
+
+.switcher-label {
+  color: #89b4fa;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  //text-transform: uppercase;
+}
+
+.players-scroll {
+  border-radius: 6px;
+  //overflow-y: scroll;
+}
+
+.player-item {
+  background: rgba(69, 71, 90, 0.5);
+  border-radius: 6px;
+  padding: 8px 12px;
+  margin: 3px 0;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(69, 71, 90, 0.8);
+    border-color: rgba(137, 180, 250, 0.3);
+  }
+  
+  &.active {
+    background: rgba(166, 227, 161, 0.15);
+    border-color: #a6e3a1;
+    
+    .player-name {
+      color: #a6e3a1;
+      font-weight: bold;
+    }
+  }
+  
+  box {
+    //min-width: 100%;
+  }
+}
+
+.player-icon {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.player-name {
+  color: #cdd6f4;
+  font-size: 13px;
+  //text-transform: capitalize;
+}
+
+// Album Art
+.album-art-container {
+  margin: 4px 0;
+  padding: 10px;
+  background: rgba(17, 17, 27, 0.4);
+  border-radius: 12px;
+}
+
+.album-art {
+  min-width: 150px;
+  min-height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: rgba(49, 50, 68, 0.5);
+}
+
+// Track Info
+.track-info {
+  margin: 8px 0;
+  padding: 10px;
+}
+
+.track-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #cdd6f4;
+  margin-bottom: 5px;
+}
+
+.track-artist {
+  font-size: 14px;
+  color: #a6adc8;
+}
+
+// Progress Bar
+.progress-container {
+  margin: 10px 0;
+}
+
+.progress-time {
+  margin-bottom: 8px;
+  padding: 0 5px;
+}
+
+.time-current,
+.time-total {
+  font-size: 12px;
+  color: #a6adc8;
+  font-family: monospace;
+}
+
+.time-current {
+  //margin-right: auto;
+}
+
+.time-total {
+  //margin-left: auto;
+}
+
+.progress-bar {
+  min-height: 8px;
+  background: rgba(69, 71, 90, 0.5);
+  border-radius: 10px;
+  
+  trough {
+    min-height: 8px;
+    background: rgba(69, 71, 90, 0.5);
+    border-radius: 10px;
+  }
+  
+  highlight {
+    background: linear-gradient(90deg, #89b4fa, #b4befe);
+    border-radius: 10px;
+  }
+  
+  slider {
+    min-width: 16px;
+    min-height: 16px;
+    background: #89b4fa;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  }
+}
+
+// Playback Controls
+.controls {
+  margin: 20px 0;
+}
+
+.control-btn {
+  background: rgba(137, 180, 250, 0.1);
+  color: #89b4fa;
+  font-size: 24px;
+  //padding: 8px 8px; //12 18
+  border-radius: 50%;
+  border: 1px solid rgba(137, 180, 250, 0.3);
+  transition: all 0.2s;
+  //min-width: 20px;
+  //min-height: 20px;
+  
+  &:hover {
+    background: rgba(137, 180, 250, 0.2);
+    //transform: scale(1.05);
+  }
+  
+  &.play-btn {
+    background: rgba(166, 227, 161, 0.15);
+    color: #a6e3a1;
+    border-color: #a6e3a1;
+    font-size: 26px;
+    min-width: 50px;
+    min-height: 50px;
+    
+    &:hover {
+      background: rgba(166, 227, 161, 0.25);
+    }
+  }
+}
+
+// Volume Control
+.volume-container {
+  margin-top: 15px;
+  padding: 12px;
+  background: rgba(49, 50, 68, 0.5);
+  border-radius: 8px;
+}
+
+.volume-icon {
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.volume-bar {
+  //flex: 1;
+  min-height: 6px;
+  background: rgba(69, 71, 90, 0.5);
+  border-radius: 10px;
+  
+  trough {
+    min-height: 6px;
+    background: rgba(69, 71, 90, 0.5);
+    border-radius: 10px;
+  }
+  
+  highlight {
+    background: linear-gradient(90deg, #f38ba8, #eba0ac);
+    border-radius: 10px;
+  }
+  
+  slider {
+    min-width: 14px;
+    min-height: 14px;
+    background: #f38ba8;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+}

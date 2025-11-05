@@ -81,6 +81,7 @@ tooltip {
 #cpu:hover,
 #memory:hover,
 #custom-powermenu:hover,
+#custom-notification:hover,
 #custom-appmenuicon:hover,
 #custom-cliphist:hover,
 #custom-hypridle:hover,
@@ -110,6 +111,7 @@ tooltip {
 #custom-waybarthemes,
 #custom-wallpaper,
 #custom-powermenu,
+#custom-notification,
 #custom-appmenuicon,
 #tray {
     padding: 0px 5px;
@@ -120,6 +122,7 @@ tooltip {
 
 #custom-appmenuicon,
 #custom-powermenu,
+#custom-notification,
 #custom-settings,
 #custom-hardware,
 #custom-tools {

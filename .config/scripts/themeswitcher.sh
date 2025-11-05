@@ -7,7 +7,8 @@
 #                                                                            
 # ----------------------------------------------------- 
  
-themes_launch_path="$HOME/.config/waybar/launch.sh"
+waybar_themes_launch_path="$HOME/.config/waybar/launch.sh"
+swaync_themes_launch_path="$HOME/.config/swaync/launch.sh"
 
 options=(
     "style-1"
@@ -25,12 +26,15 @@ chosen=$(printf "%s\n" "${options[@]}" | rofi_cmd)
 
 case $chosen in
     "style-1")
-        $themes_launch_path style-1
+        $waybar_themes_launch_path style-1
+				$swaync_themes_launch_path
         ;;
     "style-2")
-        $themes_launch_path style-2
+        $waybar_themes_launch_path style-2
+				$swaync_themes_launch_path
         ;;
     "style-3")
-        $themes_launch_path style-3
+        $waybar_themes_launch_path style-3
+				$swaync_themes_launch_path
         ;;
 esac

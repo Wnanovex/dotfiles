@@ -1,0 +1,199 @@
+// WiFi Menu Styles
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", sans-serif;
+  font-size: 14px;
+}
+
+.wifi-container {
+  background: rgba(30, 30, 46, 0.95);
+  border: 2px solid rgba(137, 180, 250, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  color: #cdd6f4;
+}
+
+.wifi-header {
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(137, 180, 250, 0.2);
+}
+
+.wifi-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #89b4fa;
+  //margin-right: auto;
+}
+
+.close-btn {
+  background: transparent;
+  color: #f38ba8;
+  font-size: 20px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(243, 139, 168, 0.2);
+  }
+}
+
+.refresh-btn {
+  background: rgba(137, 180, 250, 0.1);
+  color: #89b4fa;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(137, 180, 250, 0.3);
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(137, 180, 250, 0.2);
+  }
+}
+
+.networks-scroll {
+  border-radius: 8px;
+  background: rgba(17, 17, 27, 0.4);
+  padding: 5px;
+}
+
+.network-item {
+  background: rgba(49, 50, 68, 0.5);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 5px 0;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(69, 71, 90, 0.7);
+    border-color: rgba(137, 180, 250, 0.5);
+  }
+  
+  &.connected {
+    background: rgba(166, 227, 161, 0.1);
+    border-color: #a6e3a1;
+    
+    .ssid-label {
+      color: #a6e3a1;
+      font-weight: bold;
+    }
+  }
+  
+  box {
+    //min-width: 280px; // 340
+  }
+}
+
+.signal-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+
+.ssid-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #cdd6f4;
+  margin-bottom: 2px;
+}
+
+.security-label {
+  font-size: 12px;
+  color: #a6adc8;
+}
+
+.connected-icon {
+  color: #a6e3a1;
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 80px;
+}
+
+.password-section {
+  background: rgba(49, 50, 68, 0.5);
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid rgba(137, 180, 250, 0.3);
+}
+
+.password-label {
+  color: #89b4fa;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 13px;
+}
+
+.password-input {
+  background: rgba(17, 17, 27, 0.8);
+  color: #cdd6f4;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(137, 180, 250, 0.3);
+  margin-right: 8px;
+  //flex: 1;
+  
+  &:focus {
+    border-color: #89b4fa;
+    outline: none;
+  }
+}
+
+.connect-btn {
+  background: rgba(166, 227, 161, 0.2);
+  color: #a6e3a1;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #a6e3a1;
+  font-weight: bold;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(166, 227, 161, 0.3);
+  }
+}
+
+.cancel-btn {
+  background: rgba(243, 139, 168, 0.1);
+  color: #f38ba8;
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+  border: 1px solid rgba(243, 139, 168, 0.3);
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(243, 139, 168, 0.2);
+  }
+}
+
+
+.connect-btn {
+  background: rgba(166, 227, 161, 0.2);
+  color: #a6e3a1;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #a6e3a1;
+  font-weight: bold;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(166, 227, 161, 0.3);
+  }
+}
+
+.disconnect-btn {
+  background: rgba(243, 139, 168, 0.2);
+  color: #f38ba8;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid #f38ba8;
+  font-weight: bold;
+  transition: all 0.2s;
+  
+  &:hover {
+    background: rgba(243, 139, 168, 0.3);
+  }
+}

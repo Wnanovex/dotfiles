@@ -1,0 +1,177 @@
+* {
+  all: unset;
+  margin: 0;
+  border: none;
+  padding: 0;
+  outline: none;
+  font-family: "JetBrains Mono";
+}
+
+.music-box {
+  background-color: #1e1e2e;
+  color: white;
+  border: 3px solid #313244;
+  border-radius: 16px;
+  padding: 12px;
+}
+
+button {
+  all: unset;
+  background: none;
+}
+
+// Album Art
+.album-art-container {
+  margin: 4px 0;
+  padding: 10px;
+  background: rgba(17, 17, 27, 0.4);
+  border-radius: 12px;
+}
+
+.album-art {
+  min-width: 250px;
+  min-height: 150px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  background-color: rgba(49, 50, 68, 0.5);
+}
+
+
+.info {
+  margin-left: 12px;
+  margin-top: 15px;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 15px;
+}
+
+.artist {
+  color: #bbb;
+  font-size: 0.9em;
+}
+
+/* Progress bar with time styles */
+.progress-container {
+  margin: 16px 0 8px 0;
+  padding: 0;
+}
+
+.time-display {
+  margin-top: 8px;
+}
+
+.time-text {
+  font-size: 0.8em;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "SF Mono", "JetBrains Mono", monospace;
+  font-weight: 500;
+  min-width: 45px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.time-text.current-time {
+  
+}
+
+.time-text.total-time {
+  
+}
+
+/* Progress bar styles */
+.progress-bar {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  min-height: 8px;
+  min-width: 200px;
+}
+
+.progress-bar trough {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  min-height: 8px;
+}
+
+.progress-bar highlight {
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  border-radius: 8px;
+  min-height: 8px;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+.progress-bar slider {
+  background: white;
+  border-radius: 50%;
+  min-width: 16px;
+  min-height: 16px;
+  margin: -4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+  }
+}
+
+
+.btns-play-container {
+  margin-top: 15px;
+}
+
+.btn {
+  all: unset;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.2em;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn.prev {
+  background-color: #313244;
+}
+.btn.play {
+  background-color: #89b4fa;  /* Catppuccin blue */
+  color: #667eea;
+}
+.btn.next {
+  background-color: #313244;
+}
+
+.btn:hover {
+   background-color: #45475a; 
+}
+
+
+
+
+.player-switch {
+  all: unset;
+  border-radius: 8px;
+  background-color: #313244;
+  color: #cdd6f4;
+  padding: 4px 10px;
+  font-size: 0.8em;
+  transition: all 0.2s ease;
+}
+
+.player-switch:hover {
+  background-color: #45475a;
+}
+
+.player-switch.active {
+  background-color: #89b4fa;
+  color: blue;
+  font-weight: bold;
+}
+
+.source {
+  color: #a6adc8;
+  font-size: 0.85em;
+}
+

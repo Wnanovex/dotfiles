@@ -36,7 +36,8 @@
         "on-click": "activate",
         "on-click-middle": "close",
         "ignore-list": [
-           "Alacritty"
+           "Alacritty",
+           "com.mitchellh.ghostty"
         ],
         "app_ids-mapping": {
             "firefoxdeveloperedition": "firefox-developer-edition"
@@ -147,6 +148,12 @@
         "tooltip-format": "Power Menu"
     },
 
+    "custom/notification": {
+        "format": "",
+        "on-click": "swaync-client -t",
+        "tooltip-format": "notification"
+    },
+
     // Hypridle inhibitor
     "custom/hypridle": {
         "format": "",
@@ -180,15 +187,16 @@
     "clock": {
         "format": "{:%H:%M %a}",
         // "timezone": "America/New_York",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        //"tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         // START CLOCK FORMAT
-        "format-alt": "{:%Y-%m-%d}"
+        "format-alt": "{:%Y-%m-%d}",
         // END CLOCK FORMAT
+        "on-click": "~/.config/eww/calendar/calendar_widget.sh"
     },
 
     // System
     "custom/system": {
-        "format": "",
+        "format": " ",
         "tooltip": false
     },
 
@@ -280,7 +288,7 @@
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "nmtui",
+        "on-click": "~/.config/eww/wifi-menu/launch.sh",
         "on-click-right": "nm-connection-editor"
     },
 
@@ -298,7 +306,8 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
 				//"max-length": 50,
-        "format-icons": [" ", " ", " ", " ", " "]
+        "format-icons": [" ", " ", " ", " ", " "],
+        "on-click": "~/.config/eww/battery/battery_widget.sh"
     },
 
     // Pulseaudio

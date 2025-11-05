@@ -46,16 +46,19 @@ Welcome to my personal dotfiles repository! This setup is built on [**Arch Linux
 | Bar               | [**waybar**](https://github.com/Alexays/Waybar) |
 | Launcher          | [**rofi**](https://github.com/davatorium/rofi) |
 | Shell             | [**bash + starship**](https://starship.rs/) |
-| Text Editor       | [**vim**](https://www.vim.org/) |
+| Text Editor       | [**vim**](https://www.vim.org/)      |
+| IDE               | [**neovim**](https://www.lazyvim.org/)      |
 | Wallpaper Daemon  | [**swww**](https://github.com/LGFae/swww) + [**pywal**](https://pypi.org/project/pywal/) |
-| Notifications     | [**dunst**](https://github.com/dunst-project/dunst) |
+| Notifications     | [**swaync**](https://github.com/ErikReider/SwayNotificationCenter) |
 | File Manager      | [**dolphin**](https://apps.kde.org/dolphin/) |
 | Music Player      | [**mpd + mpc**](https://github.com/MusicPlayerDaemon/MPD) |
 | Clipboard manager | [**cliphist**](https://www.cliphist.com/) |
 | Cursor            | [**Bibata Modern Ice**](https://www.gnome-look.org/p/1197198) |
 | Fetch displayer   | [**fastfetch**](https://github.com/fastfetch-cli/fastfetch) |
+| OSD               | [**swayosd**](https://github.com/ErikReider/SwayOSD)      |
 | Logout menu       | [**wlogout**](https://github.com/ArtsyMacaw/wlogout) |
 | Lockscreen        | [**hyprlock**](https://github.com/hyprwm/hyprlock) |
+| Widgets           | [**eww**](https://github.com/elkowar/eww)      |
 | Idle daemon       | [**hypridle**](https://github.com/hyprwm/hypridle) |
 
 
@@ -68,8 +71,8 @@ Welcome to my personal dotfiles repository! This setup is built on [**Arch Linux
 
 ### Hyprland & Tools
 ```bash
-sudo pacman -S hyprland hyprlock hyprpaper hyprcursor hypridle waybar cliphist brightnessctl pavucontrol cava mpd mpc rofi swww dunst fastfetch
-yay -S waypaper wlogout xwayland-run pacseek
+sudo pacman -S hyprland hyprlock hyprpaper hyprcursor hypridle waybar cliphist brightnessctl pavucontrol cava mpd mpc rofi swww dunst flameshot fastfetch yazi neovim
+yay -S waypaper wlogout xwayland-run pacseek eww-git swaync swayosd-git
 ```
 
 ### Fonts
@@ -79,7 +82,7 @@ yay -S ttf-font-awesome ttf-roboto ttf-cascadia-code-nerd ttf-hack ttf-jetbrains
 
 ### Themes
 ```bash
-yay -S bibata-cursor-theme catppuccin-gtk-theme-mocha python-pywal16 
+yay -S bibata-cursor-theme catppuccin-gtk-theme-mocha python-pywal16 python-pywalfox
 sudo pacman -S kvantum qt5ct qt6ct nwg-look
 ```
 
@@ -108,6 +111,8 @@ cd dotfiles
 | `SUPER + Y`             | Update colorscheme & wallpaper   |
 | `SUPER + P`             | Select wallpaper script          |
 | `SUPER + Shift + T`     | Switch themes                   |
+| `SUPER + Shift + S`     | Take Screenshot                   |
+| `SUPER + Shift + M`     | Toggle music player                  |
 | `SUPER + V`             | Clipboard history manager        |
 
 

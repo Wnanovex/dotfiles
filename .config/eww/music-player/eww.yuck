@@ -1,0 +1,146 @@
+;; Music Player Window Definition
+(defwindow music-player
+  :monitor 0
+  :stacking "overlay"
+  ;;:focusable true
+  :geometry (geometry
+    :x "0%"
+    :y "0%"
+    :width "400px"
+    :height "550px"
+    :anchor "center")
+  (music-widget))
+
+;; Main Music Player Widget
+(defwidget music-widget []
+  (box :class "music-container"
+       :orientation "v"
+       :space-evenly false
+    
+    ;; Header with title and close button
+    (box :class "music-header"
+         :orientation "h"
+         ;;:space-evenly false
+      (label :class "music-title" :text "Music Player" :halign "start")
+      (button :class "close-btn" 
+              :onclick "eww -c $HOME/.config/eww/music-player/ close music-player"
+              :halign "end"
+        "✕"))
+    
+    ;; Player Switcher
+    (box :class "player-switcher"
+         :orientation "v"
+         :space-evenly false
+         :visible {players-count > 1}
+      (label :class "switcher-label" :text "Active Players" :halign "start")
+      (scroll :class "players-scroll"
+              :vscroll true
+              :vscrollbar true
+              :height 120
+        (box :orientation "v"
+             :space-evenly false
+          (for player in available-players
+            (button :class "player-item ${player == current-player ? 'active' : ''}"
+                    :onclick "scripts/music.sh switch '${player}'"
+              (box :orientation "h"
+                   :space-evenly false
+                (label :class "player-icon" :text {player == "spotify" ? "🎵" : player == "firefox" ? "🦊" : player == "brave" ? "🦁" : "🎧"})
+                (label :class "player-name" :text {player} :halign "start")))))))
+    
+    ;; Album Art
+    (box :class "album-art-container"
+         :orientation "v"
+      (box :class "album-art"
+           :style "background-image: url('${album-art}');"))
+    
+    ;; Track Info
+    (box :class "track-info"
+         :orientation "v"
+         :space-evenly false
+      (label :class "track-title" 
+             :text {track-title != "" ? track-title : "No track playing"}
+             :limit-width 35
+             :halign "center")
+      (label :class "track-artist" 
+             :text {track-artist != "" ? track-artist : ""}
+             :limit-width 40
+             :halign "center"))
+    
+    ;; Progress Bar
+    (box :class "progress-container"
+         :orientation "v"
+         :space-evenly false
+      (box :class "progress-time"
+           :orientation "h"
+        (label :class "time-current" :text {position-time} :halign "start")
+        (label :class "time-total" :text {length-time} :halign "end"))
+      (scale :class "progress-bar"
+             :value {position-percent}
+             :min 0
+             :max 100
+             :onchange "scripts/music.sh seek {}"))
+    
+    ;; Playback Controls
+    (box :class "controls"
+         :orientation "h"
+         :halign "center"
+         :spacing 15
+      (button :class "control-btn"
+              :onclick "scripts/music.sh previous"
+        "⏮")
+      (button :class "control-btn play-btn"
+              :onclick "scripts/music.sh play-pause"
+        {playback-status == "Playing" ? "⏸" : "▶"})
+      (button :class "control-btn"
+              :onclick "scripts/music.sh next"
+        "⏭"))
+    
+    ;; Volume Control
+    ;;(box :class "volume-container"
+    ;;     :orientation "h"
+    ;;     :space-evenly false
+    ;;  (label :class "volume-icon" :text "🔊")
+    ;;  (scale :class "volume-bar"
+    ;;         :value {volume}
+    ;;         :min 0
+    ;;         :max 100
+    ;;         :onchange "scripts/music.sh volume {}"))
+    ))
+
+;; Variables
+(defpoll music-data :interval "1s"
+  :initial '{"status":"Stopped","title":"","artist":"","art":"","position":0,"length":0,"volume":50,"player":"none"}'
+  "scripts/music.sh status")
+
+(deflisten playback-status :initial "Stopped"
+  "scripts/music.sh listen status")
+
+(deflisten track-title :initial ""
+  "scripts/music.sh listen title")
+
+(deflisten track-artist :initial ""
+  "scripts/music.sh listen artist")
+
+(deflisten album-art :initial ""
+  "scripts/music.sh listen art")
+
+(deflisten position-percent :initial "0"
+  "scripts/music.sh listen position-percent")
+
+(deflisten position-time :initial "0:00"
+  "scripts/music.sh listen position-time")
+
+(deflisten length-time :initial "0:00"
+  "scripts/music.sh listen length-time")
+
+(deflisten volume :initial "50"
+  "scripts/music.sh listen volume")
+
+(deflisten current-player :initial ""
+  "scripts/music.sh listen current-player")
+
+(deflisten available-players :initial "[]"
+  "scripts/music.sh listen players")
+
+(deflisten players-count :initial "0"
+  "scripts/music.sh listen players-count")

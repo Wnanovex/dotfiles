@@ -1,0 +1,130 @@
+;; WiFi Menu Window Definition
+(defwindow wifi-menu
+  :monitor 0
+  :focusable true
+  :stacking "overlay"
+  :geometry (geometry :x "5%" :y "0%" :width "350px" :height "500px" :anchor "top right")
+  (wifi-widget))
+
+
+;; Main WiFi Widget
+(defwidget wifi-widget []
+  (box :class "wifi-container"
+       :orientation "v"
+       :space-evenly false
+    (box :class "wifi-header"
+         :orientation "h"
+         ;;:space-evenly false
+      (label :class "wifi-title" :text "WiFi Networks" :halign "start")
+      (button :class "close-btn" 
+              :onclick "eww -c ~/.config/eww/wifi-menu close wifi-menu"
+              :halign "end"
+        "✕"))
+    
+    ;; Refresh button
+    (button :class "refresh-btn"
+            :onclick "scripts/wifi.sh scan"
+      "🔄 Refresh Networks")
+    
+    ;; Networks list
+    (scroll :class "networks-scroll"
+            :vscroll true
+            :height 300
+      (box :orientation "v"
+           :space-evenly false
+        (for network in wifi-list
+          (network-item :ssid {network.ssid}
+                       :signal {network.signal}
+                       :security {network.security}
+                       :connected {network.connected}))))
+    
+    ;; Action section (Connect/Disconnect or Password input)
+    (box :class "action-section"
+         :orientation "v"
+         :space-evenly false
+         :visible {show-action-section}
+      
+      ;; Show password input for new secured networks
+      (box :orientation "v"
+           :space-evenly false
+           :visible {show-password-input}
+        (label :class "action-label" 
+               :text "Connect to: ${selected-ssid}"
+               :halign "start")
+        (box :orientation "v"
+             :space-evenly false
+          (input :class "password-input"
+                 :password true
+                 :onchange "scripts/wifi.sh setpass '{}'"
+                 :value wifi-password)
+          (button :class "connect-btn"
+                  :onclick "scripts/wifi.sh connect '${selected-ssid}' '${wifi-password}'"
+            "Connect")))
+      
+      ;; Show connect button for known networks
+      (box :orientation "v"
+           :space-evenly false
+           :visible {show-connect-button}
+        (label :class "action-label" 
+               :text "Network: ${selected-ssid}"
+               :halign "start")
+        (button :class "connect-btn"
+                :onclick "scripts/wifi.sh connect-saved '${selected-ssid}'"
+          "Connect")
+
+        (button :class "cancel-btn"
+                :onclick "scripts/wifi.sh forget '${selected-ssid}'"
+          "Forget")
+        )
+      
+      ;; Show disconnect button for connected network
+      (box :orientation "v"
+           :space-evenly false
+           :visible {show-disconnect-button}
+        (label :class "action-label" 
+               :text "Connected to: ${selected-ssid}"
+               :halign "start")
+        (button :class "disconnect-btn"
+                :onclick "scripts/wifi.sh disconnect '${selected-ssid}'"
+          "Disconnect")
+
+        (button :class "cancel-btn"
+                :onclick "scripts/wifi.sh forget '${selected-ssid}'"
+          "Forget")
+        )
+      
+      ;; Cancel button (always shown when action section is visible)
+      (button :class "cancel-btn"
+              :onclick "scripts/wifi.sh cancel"
+        "Cancel"))))
+
+;; Individual network item widget
+(defwidget network-item [ssid signal security connected]
+  (button :class "network-item ${connected == 'yes' ? 'connected' : ''}"
+          :onclick "scripts/wifi.sh select '${ssid}'"
+    (box :orientation "h"
+         :space-evenly false
+      (label :class "signal-icon" 
+             :text {signal >= 75 ? "📶" : signal >= 50 ? "📶" : signal >= 25 ? "📡" : "📡"})
+      (box :orientation "v"
+           :space-evenly false
+           :halign "start"
+        (label :class "ssid-label" :text ssid :halign "start")
+        (label :class "security-label" 
+               :text {security == "yes" ? "🔒 Secured" : "🔓 Open"}
+               :halign "start"))
+      (label :class "connected-icon"
+             :text {connected == "yes" ? "✓" : ""}
+             :halign "end"))))
+
+;; Variables
+(defpoll wifi-list :interval "2s"
+  :initial "[]"
+  "scripts/wifi.sh list")
+
+(defvar show-action-section false)
+(defvar show-password-input false)
+(defvar show-connect-button false)
+(defvar show-disconnect-button false)
+(defvar selected-ssid "")
+(defvar wifi-password "")
